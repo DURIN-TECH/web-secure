@@ -1,0 +1,22 @@
+{
+  "name": "Web Secure",
+  "description": "Protects web and crypto users from malicious applications and dapps that seek to scam them off their funds or make them lose their tokens.  ",
+  "version": "0.1.0",
+  "manifest_version": 3,
+  "icons": {
+    "16": "./icon.png",
+    "32": "./icon.png",
+    "48": "./icon.png",
+    "128": "./icon.png"
+  },
+  "action": {
+    "default_popup": "./index.html",
+    "default_icons": {
+      "16": "./icon.png",
+      "32": "./icon.png",
+      "48": "./icon.png",
+      "128": "./icon.png"
+    }
+  },
+  "permissions": ["activeTab", "tabs"]
+}

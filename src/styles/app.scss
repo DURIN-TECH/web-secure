@@ -1,0 +1,290 @@
+@import url("https://fonts.googleapis.com/css?family=Poppins&display=swap");
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+$grey: #838383;
+$blue: #2860e1;
+
+body {
+  font-family: "Poppins", sans-serif;
+  margin: 0px;
+  width: 350px;
+  height: 400px;
+  overflow: scroll;
+  position: relative;
+
+}
+
+header {
+  h1 {
+    font-size: 1rem;
+  }
+  display: flex;
+  height: fit-content;
+  justify-content: space-between;
+  padding: 5px;
+  align-items: center;
+}
+hr {
+  margin-top: 0px;
+}
+.link-validator {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 5px;
+
+  &__header {
+    .icon_wrapper {
+      padding: 10px;
+      display: flex;
+      align-items: center;
+      h3 {
+        margin-left: 5px;
+      }
+    }
+    p {
+      padding-right: 10px;
+      b {
+        color: $blue;
+      }
+    }
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+  }
+  &__main {
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+    justify-content: space-around;
+    margin-top: 5px;
+    &__link {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 50%;
+      padding: 15px;
+      flex-direction: column;
+      height: fit-content;
+      border: solid 1px #E2E8F0;
+      ;
+    }
+  }
+  .detected_difference {
+    margin-top: 5px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    em {
+      display: flex;
+      padding: 2px;
+      align-items: center;
+      h2 {
+        margin-left: 10px;
+      }
+    }
+
+    p {
+      color: $blue;
+    }
+  }
+}
+.approvals {
+  display: flex;
+  flex-direction: column;
+
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    .icon_wrapper {
+      padding: 10px;
+      display: flex;
+      align-items: center;
+      h3 {
+        margin-left: 5px;
+      }
+    }
+    b {
+      color: $blue;
+      font-weight: lighter;
+      padding-right: 10px;
+    }
+  }
+  .contracts_header {
+    padding-left: 10px;
+    display: flex;
+    align-items: center;
+  }
+  .contract_list {
+    display: flex;
+    flex-direction: column;
+    padding-top: 5px;
+    height: 260px;
+    overflow-y: scroll;
+    &::-webkit-scrollbar {
+      width: 12px;               /* width of the entire scrollbar */
+    }
+    &::-webkit-scrollbar-track {
+      background: white;        /* color of the tracking area */
+    }
+    &::-webkit-scrollbar-thumb {
+      background-color: $grey;    /* color of the scroll thumb */
+      border-radius: 20px;       /* roundness of the scroll thumb */
+      border: 3px solid white;  /* creates padding around scroll thumb */
+    }
+
+    .contract {
+        display: flex;
+        width:100%;
+        height:fit-content;
+        align-items: center;
+        padding: 10px;
+        background-color: #E2E8F0;
+        margin-bottom: 5px;
+        &__title {
+          display: flex;
+          justify-self: flex-start;
+      }
+      &__button {
+          display: flex;
+          margin-left: auto;
+          align-items: center;
+          padding: 5px;
+          border-radius: 3px;
+          background-color: white;
+
+          p{
+              margin-left: 5px;
+          }
+      }
+    }
+  }
+}
+.price-checker{
+    &__header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        .icon_wrapper {
+          padding: 10px;
+          display: flex;
+          align-items: center;
+          h3 {
+            margin-left: 5px;
+          }
+        }
+        b {
+          color: $blue;
+          font-weight: lighter;
+          padding-right: 10px;
+        }
+      }
+      .offer_header{
+        padding-left: 10px;
+        display: flex;
+        align-items: center;
+      }
+      input{
+          border: solid 1px black;
+      }
+      .scroll{
+        height:260px;
+        overflow-y: scroll;
+        &::-webkit-scrollbar {
+          width: 12px;               /* width of the entire scrollbar */
+        }
+        &::-webkit-scrollbar-track {
+          background: white;        /* color of the tracking area */
+        }
+        &::-webkit-scrollbar-thumb {
+          background-color: $grey;    /* color of the scroll thumb */
+          border-radius: 20px;       /* roundness of the scroll thumb */
+          border: 3px solid white;  /* creates padding around scroll thumb */
+        }
+      }
+      .nft-details{
+            display: flex;
+            justify-content: space-between;
+            padding: 10px;
+            
+            &__address{
+                display: flex;
+                flex-direction: column;
+                width: 50%;
+            }
+            &__token-id{
+                display: flex;
+                flex-direction: column;
+                width: 30%;
+
+            }
+      }.offer-details{
+          display: flex;
+          justify-content: space-between;
+          padding: 10px;
+          &__amount{
+            display: flex;
+            flex-direction: column;
+            width: 50%;
+
+        }
+        &__token-type{
+            display: flex;
+            flex-direction: column;
+            width: 30%;
+
+        }
+      }
+      .summary_list{
+          padding: 10px;
+          display: flex;
+          flex-direction: column;
+          .summary{
+              display: flex;
+              justify-content: space-between;
+              align-items: center;
+              margin-top: 5px;
+
+
+              &__title {
+                display: flex;
+            }
+            &__input {
+                display: flex;
+                margin-left: auto;
+                width: 30%;
+      
+            }
+          }
+      }
+      .verdict{
+          display: flex;
+          justify-content: center;
+          margin-top: 5px;
+          margin-bottom: 30px;
+          h2{
+              font-weight: bold;
+              display: flex;
+              align-items: center;
+              b{
+                  color: $blue;
+                  font-weight: lighter;
+                  margin-left: 5px;
+              }
+          }
+      }
+}
+.platform-checkmark{
+  align-items: center;
+  display: flex;
+  padding: 10px;
+}
