@@ -74,6 +74,13 @@ hr {
       flex-direction: column;
       height: fit-content;
       border: solid 1px #E2E8F0;
+      P{
+        display: flex;
+        width: 100%;
+        flex-wrap: nowrap;
+        white-space: nowrap;
+        overflow: hidden
+      }
       ;
     }
   }
