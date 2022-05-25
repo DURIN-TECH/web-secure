@@ -47,21 +47,21 @@ export default function LinkValidator() {
             Verdict: <b> In Progress</b>
           </p>
         </div>
-        <div class="link-validator__main">
-          <span class="link-validator__main__link current_link">
+        <div className="link-validator__main">
+          <span className="link-validator__main__link current_link">
             <b>
               <h2>Current Link</h2>
             </b>
             <p>{link}</p>
           </span>
-          <span class="link-validator__main__link original_link">
+          <span className="link-validator__main__link original_link">
             <b>
               <h2>Original Link</h2>
             </b>
             <p>https://uniswap.com</p>
           </span>
         </div>
-        <span class="detected_difference">
+        <span className="detected_difference">
           <em>
             {" "}
             <FiAlertTriangle />
