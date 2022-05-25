@@ -38,8 +38,8 @@ export default function LinkValidator() {
   }, [link]);
   return (
     <>
-      <div class="link-validator">
-        <div class="link-validator__header">
+      <div className="link-validator">
+        <div className="link-validator__header">
           <span className="icon_wrapper">
             <FiLink /> <h3>Link Validator</h3>
           </span>
