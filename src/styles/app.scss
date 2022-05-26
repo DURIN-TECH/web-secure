@@ -8,6 +8,8 @@
 }
 $grey: #838383;
 $blue: #2860e1;
+$green: #00e676;
+$red: #d50000;
 
 body {
   font-family: "Poppins", sans-serif;
@@ -16,7 +18,6 @@ body {
   height: 400px;
   overflow: scroll;
   position: relative;
-
 }
 
 header {
@@ -73,15 +74,15 @@ hr {
       padding: 15px;
       flex-direction: column;
       height: fit-content;
-      border: solid 1px #E2E8F0;
-      P{
+      border: solid 1px #e2e8f0;
+      P {
         display: flex;
-        width: 100%;
         flex-wrap: nowrap;
         white-space: nowrap;
-        overflow: hidden
+        overflow: hidden;
+        width: fit-content;
+        margin: 0 auto;
       }
-      ;
     }
   }
   .detected_difference {
@@ -90,12 +91,12 @@ hr {
     justify-content: center;
     flex-direction: column;
     align-items: center;
-    em {
+    span {
       display: flex;
       padding: 2px;
       align-items: center;
       h2 {
-        margin-left: 10px;
+        margin-left: 5px;
       }
     }
 
@@ -138,160 +139,219 @@ hr {
     height: 260px;
     overflow-y: scroll;
     &::-webkit-scrollbar {
-      width: 12px;               /* width of the entire scrollbar */
+      width: 12px; /* width of the entire scrollbar */
     }
     &::-webkit-scrollbar-track {
-      background: white;        /* color of the tracking area */
+      background: white; /* color of the tracking area */
     }
     &::-webkit-scrollbar-thumb {
-      background-color: $grey;    /* color of the scroll thumb */
-      border-radius: 20px;       /* roundness of the scroll thumb */
-      border: 3px solid white;  /* creates padding around scroll thumb */
+      background-color: $grey; /* color of the scroll thumb */
+      border-radius: 20px; /* roundness of the scroll thumb */
+      border: 3px solid white; /* creates padding around scroll thumb */
     }
 
     .contract {
+      display: flex;
+      width: 100%;
+      height: fit-content;
+      align-items: center;
+      padding: 10px;
+      background-color: #e2e8f0;
+      margin-bottom: 5px;
+      &__title {
         display: flex;
-        width:100%;
-        height:fit-content;
-        align-items: center;
-        padding: 10px;
-        background-color: #E2E8F0;
-        margin-bottom: 5px;
-        &__title {
-          display: flex;
-          justify-self: flex-start;
+        justify-self: flex-start;
       }
       &__button {
-          display: flex;
-          margin-left: auto;
-          align-items: center;
-          padding: 5px;
-          border-radius: 3px;
-          background-color: white;
+        display: flex;
+        margin-left: auto;
+        align-items: center;
+        padding: 5px;
+        border-radius: 3px;
+        background-color: white;
 
-          p{
-              margin-left: 5px;
-          }
+        p {
+          margin-left: 5px;
+        }
       }
     }
   }
 }
-.price-checker{
-    &__header {
+.price-checker {
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    .icon_wrapper {
+      padding: 10px;
+      display: flex;
+      align-items: center;
+      h3 {
+        margin-left: 5px;
+      }
+    }
+    b {
+      color: $blue;
+      font-weight: lighter;
+      padding-right: 10px;
+    }
+  }
+  .offer_header {
+    padding-left: 10px;
+    display: flex;
+    align-items: center;
+  }
+  input {
+    border: solid 1px black;
+  }
+  .scroll {
+    height: 260px;
+    overflow-y: scroll;
+    &::-webkit-scrollbar {
+      width: 12px; /* width of the entire scrollbar */
+    }
+    &::-webkit-scrollbar-track {
+      background: white; /* color of the tracking area */
+    }
+    &::-webkit-scrollbar-thumb {
+      background-color: $grey; /* color of the scroll thumb */
+      border-radius: 20px; /* roundness of the scroll thumb */
+      border: 3px solid white; /* creates padding around scroll thumb */
+    }
+  }
+  .nft-details {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+
+    &__address {
+      display: flex;
+      flex-direction: column;
+      width: 50%;
+    }
+    &__token-id {
+      display: flex;
+      flex-direction: column;
+      width: 30%;
+    }
+  }
+  .offer-details {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    &__amount {
+      display: flex;
+      flex-direction: column;
+      width: 50%;
+    }
+    &__token-type {
+      display: flex;
+      flex-direction: column;
+      width: 30%;
+    }
+  }
+  .summary_list {
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    .summary {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 5px;
+
+      &__title {
         display: flex;
-        align-items: center;
-        justify-content: space-between;
-        .icon_wrapper {
-          padding: 10px;
-          display: flex;
-          align-items: center;
-          h3 {
-            margin-left: 5px;
-          }
-        }
-        b {
-          color: $blue;
-          font-weight: lighter;
-          padding-right: 10px;
-        }
       }
-      .offer_header{
-        padding-left: 10px;
+      &__input {
         display: flex;
-        align-items: center;
+        margin-left: auto;
+        width: 30%;
       }
-      input{
-          border: solid 1px black;
+    }
+  }
+  .verdict {
+    display: flex;
+    justify-content: center;
+    margin-top: 5px;
+    margin-bottom: 30px;
+    h2 {
+      font-weight: bold;
+      display: flex;
+      align-items: center;
+      b {
+        color: $blue;
+        font-weight: lighter;
+        margin-left: 5px;
       }
-      .scroll{
-        height:260px;
-        overflow-y: scroll;
-        &::-webkit-scrollbar {
-          width: 12px;               /* width of the entire scrollbar */
-        }
-        &::-webkit-scrollbar-track {
-          background: white;        /* color of the tracking area */
-        }
-        &::-webkit-scrollbar-thumb {
-          background-color: $grey;    /* color of the scroll thumb */
-          border-radius: 20px;       /* roundness of the scroll thumb */
-          border: 3px solid white;  /* creates padding around scroll thumb */
-        }
-      }
-      .nft-details{
-            display: flex;
-            justify-content: space-between;
-            padding: 10px;
-            
-            &__address{
-                display: flex;
-                flex-direction: column;
-                width: 50%;
-            }
-            &__token-id{
-                display: flex;
-                flex-direction: column;
-                width: 30%;
-
-            }
-      }.offer-details{
-          display: flex;
-          justify-content: space-between;
-          padding: 10px;
-          &__amount{
-            display: flex;
-            flex-direction: column;
-            width: 50%;
-
-        }
-        &__token-type{
-            display: flex;
-            flex-direction: column;
-            width: 30%;
-
-        }
-      }
-      .summary_list{
-          padding: 10px;
-          display: flex;
-          flex-direction: column;
-          .summary{
-              display: flex;
-              justify-content: space-between;
-              align-items: center;
-              margin-top: 5px;
-
-
-              &__title {
-                display: flex;
-            }
-            &__input {
-                display: flex;
-                margin-left: auto;
-                width: 30%;
-      
-            }
-          }
-      }
-      .verdict{
-          display: flex;
-          justify-content: center;
-          margin-top: 5px;
-          margin-bottom: 30px;
-          h2{
-              font-weight: bold;
-              display: flex;
-              align-items: center;
-              b{
-                  color: $blue;
-                  font-weight: lighter;
-                  margin-left: 5px;
-              }
-          }
-      }
+    }
+  }
 }
-.platform-checkmark{
-  align-items: center;
+.platform-checkmark {
   display: flex;
-  padding: 10px;
+  flex-direction: column;
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    padding: 15px;
+
+    h2 {
+      display: flex;
+      align-items: center;
+    }
+    p {
+      color: $blue;
+    }
+  }
+  &__main-details {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-bottom: 10px;
+    padding: 5px;
+
+    h3,
+    p {
+      font-family: monospace;
+      font-size: .9rem;
+    }
+    p{
+      color: $blue;
+    }
+
+    h1 {
+      font-size: 1.6rem;
+      color: $green;
+    }
+  }
+  &__more-details {
+    display: flex;
+    justify-content: space-between;
+    height: 200px;
+    overflow-y: scroll;
+    &::-webkit-scrollbar {
+      width: 12px; /* width of the entire scrollbar */
+    }
+    &::-webkit-scrollbar-track {
+      background: white; /* color of the tracking area */
+    }
+    &::-webkit-scrollbar-thumb {
+      background-color: $grey; /* color of the scroll thumb */
+      border-radius: 20px; /* roundness of the scroll thumb */
+      border: 3px solid white; /* creates padding around scroll thumb */
+    }
+    span {
+      display: flex;
+      flex-direction: column;
+      width: 30%;
+      text-align: center;
+      padding: 5px;
+
+      h2 {
+        font-weight: bold;
+        margin-bottom: 10px;
+      }
+    }
+  }
 }

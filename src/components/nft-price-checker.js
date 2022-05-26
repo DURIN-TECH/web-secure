@@ -1,6 +1,5 @@
 import React from "react";
-import { FaSearchDollar } from "react-icons/fa";
-import { FiChevronDown, FiAlertTriangle } from "react-icons/fi";
+import { FiChevronDown,FiSearch, FiAlertTriangle } from "react-icons/fi";
 
 export default function NFTPriceChecker() {
   return (
@@ -8,7 +7,7 @@ export default function NFTPriceChecker() {
       <div className="price-checker">
         <div className="price-checker__header">
           <span className="icon_wrapper">
-            <FaSearchDollar /> <h3>NFT Price Check</h3>
+            < FiSearch /> <h3>NFT Price Check</h3>
           </span>
           <p>
             <b>0xef1...45bd</b>

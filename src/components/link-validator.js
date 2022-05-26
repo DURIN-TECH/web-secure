@@ -70,7 +70,7 @@ export default function LinkValidator() {
             Verdict:{" "}
             <b
               style={
-                verdict.status === "good" ? { color: "green" } : { color: "red" }
+                verdict.status === "good" ? { color: "#00E676" } : { color: "#D50000" }
               }
             >
               {verdict.message}
@@ -86,21 +86,19 @@ export default function LinkValidator() {
           </span>
           <span className="link-validator__main__link original_link">
             <b>
-              <h2>Original Link</h2>
+              <h2>Matched Link</h2>
             </b>
             <p>{bestMatch}</p>
           </span>
         </div>
         <span className="detected_difference">
-          <em>
-            {" "}
+<span>  {" "}
             <FiAlertTriangle />
-            <h2>Detected Change</h2>
-          </em>
+            <h2>Detected Change</h2></span>          
           {alert && (
             <p
               style={
-                alert.status === "good" ? { color: "green" } : { color: "red" }
+                alert.status === "good" ? { color: "#00E676" } : { color: "#D50000" }
               }
             >
               {alert.message}
