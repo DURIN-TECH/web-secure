@@ -18,10 +18,10 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
 });
 
 // console log stuff
-chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
-  if (request.message === "console") {
-    console.log(request.matches);
-    console.log(request.getSimilar);
-  }
-});
+// chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
+//   if (request.message === "console") {
+//     console.log(request.response);
+//   }
+// });
+
 
