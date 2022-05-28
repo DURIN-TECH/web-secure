@@ -17,6 +17,20 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
   return true;
 });
 
+// disable input fields
+chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
+  if (changeInfo.status === 'complete' && /^http/.test(tab.url)) {
+      chrome.scripting.executeScript({
+          target: { tabId: tabId },
+          files: ["./contentScript.js"]
+      })
+          .then(() => {
+              console.log("INJECTED THE SCRIPT.");
+          })
+          .catch(err => console.log(err));
+  }
+});
+
 // console log stuff
 // chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
 //   if (request.message === "console") {
