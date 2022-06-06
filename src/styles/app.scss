@@ -242,12 +242,16 @@ hr {
     &__amount {
       display: flex;
       flex-direction: column;
-      width: 50%;
+      width: 40%;
+      input{
+        padding-left: 5px;
+
+      }
     }
     &__token-type {
       display: flex;
       flex-direction: column;
-      width: 30%;
+      width: 50%;
     }
   }
   .summary_list {
