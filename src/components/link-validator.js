@@ -1,5 +1,8 @@
 import React from "react";
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import { FiLink, FiAlertTriangle } from "react-icons/fi";
+import { Switch } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import stringSimilarity from "string-similarity";
 import { sites } from "./crypto-sites-array";
@@ -8,20 +11,67 @@ export default function LinkValidator() {
   const str = "www.";
   const [currentLink, setCurrentLink] = useState(null);
   const [bestMatch, setBestMatch] = useState(null);
-  const [alert, setAlert] = useState({});
+  const [validationAlert, setAlert] = useState({});
   const [verdict, setVerdict] = useState({});
+  const [checked, setChecked] = useState(false);
+  const [rootURL, setRootURL] = useState(false);
 
-  // get cuurent tab URL from background script
+  
+  // handle black/whitelisting of sites
+  const  handleListing = (isChecked) => {
+    if (isChecked === true) {
+      // send a message to the background script to whitelist current url
+      window.chrome.runtime.sendMessage(
+        { message: "SET_WHITELIST" },
+        (response) => {
+          if (response.status === true) {
+            toast.success("this site has been whitelisted. Refresh to see changes.",{autoClose: 2000, closeButton:false})
+
+          }
+        }
+      );
+    } else {
+      // send a message to the background script to remove current url from whitelist
+      window.chrome.runtime.sendMessage(
+        { message: "REMOVE_WHITELIST" },
+        (response) => {
+          if (response.status === true) {
+            toast.info("this site has been removed from whitelist.",{autoClose: 2000, position: "bottom-right", closeButton:false})
+          }
+        }
+      );
+    }
+  }
+  const handleCheck = () => {
+    setChecked(!checked);
+    handleListing(!checked);
+  };
+
+
+  // get current tab URL from background script
   useEffect(() => {
     // send a message to the background script to retrieve the current url
     window.chrome.runtime.sendMessage({ message: "GET_URL" }, (response) => {
       // format string to remove trailing slash and www.
       const url = response.url;
       const formatURL = url.split("/").slice(0, 3).join("/");
+      setRootURL(formatURL);
       const formattedUrl = formatURL.replace(str, "");
       setCurrentLink(formattedUrl.replace(/\/$/, ""));
     });
   }, []);
+
+  // get whitelist from storage
+  useEffect(() => {
+    window.chrome.storage.local.get("web_secure_whitelist", (result) => {
+      const whitelist = result.web_secure_whitelist;
+      // check if url is in array
+      const isInArray = whitelist.includes(rootURL);
+      if (isInArray) {
+        setChecked(true);
+      }
+    });
+  }, [rootURL]);
 
   // find best matched URL from array
   useEffect(() => {
@@ -70,7 +120,9 @@ export default function LinkValidator() {
             Verdict:{" "}
             <b
               style={
-                verdict.status === "good" ? { color: "#00E676" } : { color: "#D50000" }
+                verdict.status === "good"
+                  ? { color: "#00E676" }
+                  : { color: "#D50000" }
               }
             >
               {verdict.message}
@@ -92,19 +144,33 @@ export default function LinkValidator() {
           </span>
         </div>
         <span className="detected_difference">
-<span>  {" "}
+          <span>
+            {" "}
             <FiAlertTriangle />
-            <h2>Detected Change</h2></span>          
-          {alert && (
+            <h2>Detected Change</h2>
+          </span>
+          {validationAlert && (
             <p
               style={
-                alert.status === "good" ? { color: "#00E676" } : { color: "#D50000" }
+                validationAlert.status === "good"
+                  ? { color: "#00E676" }
+                  : { color: "#D50000" }
               }
             >
-              {alert.message}
+              {validationAlert.message}
             </p>
           )}
         </span>
+        <div className="whitelist_site">
+          <h2>Whitelist Site</h2>
+          <Switch
+            id="whitelist_site"
+            size="md"
+            style={{ marginLeft: 10 }}
+            isChecked={checked}
+            onChange={handleCheck}
+          />
+        </div>
       </div>
     </>
   );

@@ -1,39 +1,49 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import { Select } from "@chakra-ui/react";
 import { FiChevronDown, FiSearch, FiAlertTriangle } from "react-icons/fi";
 import { tokenList } from "./token-list";
 import axios from "axios";
 
 export default function NFTPriceChecker() {
-  const [tokenType, setTokenType] = useState("");
+  const [tokenAddress, setTokenAddress] = useState("");
   const [offerAmount, setOfferAmount] = useState("");
   const [offerValue, setOfferValue] = useState("");
 
   const handleTokenType = (e) => {
-    setTokenType(e.target.value);
+    setTokenAddress(e.target.value);
   };
   const handleOfferAmount = (e) => {
     setOfferAmount(e.target.value);
   };
   const handleSummary = (e) => {
-    if (offerAmount && tokenType) {
+    if (offerAmount && tokenAddress) {
+      const headers = {
+        "Content-Type": "application/json",
+        "X-API-Key":
+          "oGVKdL8OxL5M1sVH2jYTA9WKYHshReAGBHbRJG5Z7s9OzIPsXzASXbpZ5VNB40Dv",
+      };
+
       axios
-      .get(
-        `https://api.coingecko.com/api/v3/simple/price?ids=${tokenType}&vs_currencies=usd`
-      )
+        .get(
+          `
+      https://deep-index.moralis.io/api/v2/erc20/${tokenAddress}/price?chain=eth`,
+          {
+            headers: headers,
+          }
+        )
         .then((response) => {
-          console.log(tokenType)
-        console.log(response)
-          const currentPrice = response.data[tokenType].usd;
-        setOfferValue(currentPrice * offerAmount);
-      })
-      .catch((err) => {
-        console.log({ err });
-      });
+          const currentPrice = response.data.usdPrice;
+          setOfferValue(currentPrice * offerAmount);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
     } else {
-      alert("Please fill both amount and token type fields")
+      toast.warning("Please fill both amount and token type fields!",{autoClose: 2000, position: "bottom-right", closeButton:false})
+
     }
-    
   };
 
   return (
@@ -74,21 +84,23 @@ export default function NFTPriceChecker() {
             <div className="offer-details__token-type">
               <p>Token Type</p>
               <Select
-                size="md"
+                size="sm"
                 _focus={{ boxShadow: "none" }}
                 placeholder="Select token"
-                value={tokenType}
+                value={tokenAddress}
                 onChange={handleTokenType}
               >
                 {tokenList.map((token) => (
-                  <option value={token.name.replace(/\s+/g, "-").toLowerCase()}>
-                    {token.symbol}
-                  </option>
+                  <option value={token.address}>{token.symbol}</option>
                 ))}
               </Select>
             </div>
           </div>
-          <button onClick={handleSummary}> Generate Summary</button>
+          <div className="generate_summary"><button className="generate_summary__btn" onClick={handleSummary}>
+            {" "}
+            Generate Summary
+          </button></div>
+          
           <div className="summary_list">
             <h2>
               <b>Executive Summary</b>

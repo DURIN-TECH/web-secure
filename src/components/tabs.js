@@ -4,6 +4,8 @@ import LinkValidator from "./link-validator";
 import CheckApprovals from "./check-approvals";
 import NFTPriceChecker from "./nft-price-checker";
 import PlatformSecurityCheckmark from "./platform-security-checkmark";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export default function HomeTabs() {
   return (
@@ -32,6 +34,8 @@ export default function HomeTabs() {
           </TabPanel>
         </TabPanels>
       </Tabs>
+      <ToastContainer position="bottom-right"/>
+
     </>
   );
 }

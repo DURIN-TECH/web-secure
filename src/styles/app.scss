@@ -104,6 +104,14 @@ hr {
       color: $blue;
     }
   }
+  .whitelist_site{
+    display: flex;
+    width: 100%;
+    padding: 20px;
+    justify-content: flex-start;
+    align-items: center;
+    margin-top: 15px;
+  }
 }
 .approvals {
   display: flex;
@@ -219,6 +227,21 @@ hr {
       border: 3px solid white; /* creates padding around scroll thumb */
     }
   }
+  .generate_summary{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    &__btn{
+      background-color: $blue;
+      padding: 10px;
+      border-radius: 5px;
+      font-size: 1rem;
+      color: white;
+      font-size: .75rem;
+
+    }
+  }
+  
   .nft-details {
     display: flex;
     justify-content: space-between;
@@ -271,6 +294,8 @@ hr {
         display: flex;
         margin-left: auto;
         width: 30%;
+        padding-left: 5px;
+
       }
     }
   }
