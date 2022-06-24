@@ -1,6 +1,6 @@
 import React from "react";
-import { toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import { FiLink, FiAlertTriangle } from "react-icons/fi";
 import { Switch } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
@@ -16,17 +16,18 @@ export default function LinkValidator() {
   const [checked, setChecked] = useState(false);
   const [rootURL, setRootURL] = useState(false);
 
-  
   // handle black/whitelisting of sites
-  const  handleListing = (isChecked) => {
+  const handleListing = (isChecked) => {
     if (isChecked === true) {
       // send a message to the background script to whitelist current url
       window.chrome.runtime.sendMessage(
         { message: "SET_WHITELIST" },
         (response) => {
           if (response.status === true) {
-            toast.success("this site has been whitelisted. Refresh to see changes.",{autoClose: 2000, closeButton:false})
-
+            toast.success(
+              "this site has been whitelisted. Refresh to see changes.",
+              { autoClose: 2000, closeButton: false }
+            );
           }
         }
       );
@@ -36,17 +37,20 @@ export default function LinkValidator() {
         { message: "REMOVE_WHITELIST" },
         (response) => {
           if (response.status === true) {
-            toast.info("this site has been removed from whitelist.",{autoClose: 2000, position: "bottom-right", closeButton:false})
+            toast.info("this site has been removed from whitelist.", {
+              autoClose: 2000,
+              position: "bottom-right",
+              closeButton: false,
+            });
           }
         }
       );
     }
-  }
+  };
   const handleCheck = () => {
     setChecked(!checked);
     handleListing(!checked);
   };
-
 
   // get current tab URL from background script
   useEffect(() => {
