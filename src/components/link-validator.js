@@ -1,7 +1,7 @@
 import React from "react";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { FiLink, FiAlertTriangle } from "react-icons/fi";
+import { FiAlertTriangle, FiCheckCircle } from "react-icons/fi";
 import { Switch } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import stringSimilarity from "string-similarity";
@@ -91,24 +91,43 @@ export default function LinkValidator() {
   // compare Current URL and best matched URl
   useEffect(() => {
     if (bestMatch && currentLink) {
-      const alpha = bestMatch.split("");
-      const beta = currentLink.split("");
-      let diff = [];
-      alpha.forEach((letter, index) => {
-        if (letter !== beta[index]) {
-          diff.push(beta[index]);
-        }
-      });
-      // if there is difference between the two strings then the link is insecure
-      if (diff.length) {
+      if (bestMatch.length !== currentLink.length) {
         setAlert({
           status: "bad",
           message: `detected changes in URL`,
         });
         setVerdict({ status: "bad", message: "Fake" });
       } else {
-        setAlert({ status: "good", message: `no detected changes in URL` });
-        setVerdict({ status: "good", message: "Original" });
+        const alpha = bestMatch.split("");
+        const beta = currentLink.split("");
+        let diff = [];
+        let diffIndex = [];
+        alpha.forEach((letter, index) => {
+          if (letter !== beta[index]) {
+            diff.push(beta[index]);
+            diffIndex.push(index);
+          }
+        });
+        if (!diff.length) {
+          setAlert({ status: "good", message: `no detected changes in URL` });
+          setVerdict({ status: "good", message: "Original" });
+        } else {
+          let diffString = "";
+          for (let index = 0; index < currentLink.length; index++) {
+            if (!diffIndex.includes(index)) {
+              diffString = diffString + "-";
+            } else {
+              diffString = diffString + `${currentLink[index]}`;
+            }
+          }
+          const dots = currentLink.split(".");
+          const tld = dots[1];
+          const tldLength = tld.length + 1;
+          const diffString2 = diffString.slice(8, -tldLength);
+          const difference = `https://${diffString2}.${tld}`;
+          setAlert({ status: "bad", message: `${difference}` });
+          setVerdict({ status: "bad", message: "Fake" });
+        }
       }
     }
   }, [bestMatch, currentLink]);
@@ -117,9 +136,10 @@ export default function LinkValidator() {
     <>
       <div className="link-validator">
         <div className="link-validator__header">
-          <span className="icon_wrapper">
-            <FiLink /> <h3>Link Validator</h3>
-          </span>
+          <h3>
+            {" "}
+            <FiCheckCircle style={{ marginRight: 5 }} /> Link Validator
+          </h3>
           <p>
             Verdict:{" "}
             <b

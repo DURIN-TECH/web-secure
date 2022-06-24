@@ -10,18 +10,27 @@ $grey: #838383;
 $blue: #2860e1;
 $green: #00e676;
 $red: #d50000;
+$dark: #464555;
+
+html {
+  font-size: 1rem;
+}
 
 body {
   font-family: "Poppins", sans-serif;
   margin: 0px;
-  width: 350px;
-  height: 400px;
+  width: 400px;
+  height: 500px;
   overflow: scroll;
   position: relative;
+  background-color: #aaaabc;
 }
 
 header {
   h1 {
+    display: flex;
+    align-items: center;
+    padding: 5px;
     font-size: 1rem;
   }
   display: flex;
@@ -41,16 +50,16 @@ hr {
   margin-top: 5px;
 
   &__header {
-    .icon_wrapper {
-      padding: 10px;
+    padding: 5px;
+    h3 {
       display: flex;
       align-items: center;
-      h3 {
-        margin-left: 5px;
-      }
+      font-size: 1rem;
+      margin-left: 5px;
     }
     p {
       padding-right: 10px;
+      font-size: 1rem;
       b {
         color: $blue;
       }
@@ -75,6 +84,11 @@ hr {
       flex-direction: column;
       height: fit-content;
       border: solid 1px #e2e8f0;
+      b {
+        h2 {
+          font-size: 1rem;
+        }
+      }
       P {
         display: flex;
         flex-wrap: nowrap;
@@ -82,6 +96,7 @@ hr {
         overflow: hidden;
         width: fit-content;
         margin: 0 auto;
+        font-size: 1rem;
       }
     }
   }
@@ -97,14 +112,16 @@ hr {
       align-items: center;
       h2 {
         margin-left: 5px;
+        font-size: 1rem;
       }
     }
 
     p {
       color: $blue;
+      font-size: 1rem;
     }
   }
-  .whitelist_site{
+  .whitelist_site {
     display: flex;
     width: 100%;
     padding: 20px;
@@ -121,17 +138,17 @@ hr {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    .icon_wrapper {
-      padding: 10px;
+    padding: 5px;
+    margin-bottom: 10px;
+    h3 {
       display: flex;
       align-items: center;
-      h3 {
-        margin-left: 5px;
-      }
+      font-size: 1rem;
+      margin-left: 5px;
     }
     b {
       color: $blue;
-      font-weight: lighter;
+      font-weight: bold;
       padding-right: 10px;
     }
   }
@@ -139,12 +156,13 @@ hr {
     padding-left: 10px;
     display: flex;
     align-items: center;
+    font-size: 1rem;
   }
   .contract_list {
     display: flex;
     flex-direction: column;
     padding-top: 5px;
-    height: 260px;
+    height: 320px;
     overflow-y: scroll;
     &::-webkit-scrollbar {
       width: 12px; /* width of the entire scrollbar */
@@ -163,44 +181,60 @@ hr {
       width: 100%;
       height: fit-content;
       align-items: center;
+      justify-content: space-between;
       padding: 10px;
-      background-color: #e2e8f0;
+      background-color: white;
+      box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
       margin-bottom: 5px;
       &__title {
         display: flex;
         justify-self: flex-start;
+        color: $dark;
+        font-size: 1rem;
       }
       &__button {
-        display: flex;
-        margin-left: auto;
-        align-items: center;
-        padding: 5px;
-        border-radius: 3px;
-        background-color: white;
-
         p {
-          margin-left: 5px;
+          display: flex;
+          margin-left: auto;
+          align-items: center;
+          padding: 5px;
+          border-radius: 3px;
+          background-color: $dark;
+          color: white;
+          padding: 10px;
+          font-size: 0.9rem;
         }
       }
     }
   }
 }
 .price-checker {
+  input {
+    height: 35px;
+    border-radius: 5px;
+    border-color: #d7dde4 !important;
+    padding-left: 5px;
+    &:focus {
+      outline: none;
+    }
+  }
+
   &__header {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    .icon_wrapper {
-      padding: 10px;
+    padding: 5px;
+    margin-bottom: 10px;
+
+    h3 {
       display: flex;
       align-items: center;
-      h3 {
-        margin-left: 5px;
-      }
+      font-size: 1rem;
+      margin-left: 5px;
     }
     b {
       color: $blue;
-      font-weight: lighter;
+      font-weight: bold;
       padding-right: 10px;
     }
   }
@@ -208,12 +242,13 @@ hr {
     padding-left: 10px;
     display: flex;
     align-items: center;
+    font-size: 1rem;
   }
   input {
     border: solid 1px black;
   }
   .scroll {
-    height: 260px;
+    height: 320px;
     overflow-y: scroll;
     &::-webkit-scrollbar {
       width: 12px; /* width of the entire scrollbar */
@@ -227,21 +262,21 @@ hr {
       border: 3px solid white; /* creates padding around scroll thumb */
     }
   }
-  .generate_summary{
+  .generate_summary {
     width: 100%;
     display: flex;
     justify-content: center;
-    &__btn{
-      background-color: $blue;
+    &__btn {
+      background-color: $dark;
       padding: 10px;
-      border-radius: 5px;
+      border-radius: 3px;
       font-size: 1rem;
       color: white;
-      font-size: .75rem;
-
+      font-size: 1rem;
+      margin: 10px;
     }
   }
-  
+
   .nft-details {
     display: flex;
     justify-content: space-between;
@@ -251,28 +286,33 @@ hr {
       display: flex;
       flex-direction: column;
       width: 50%;
+      font-size: 1rem;
     }
     &__token-id {
       display: flex;
       flex-direction: column;
       width: 30%;
+      font-size: 1rem;
     }
   }
   .offer-details {
     display: flex;
     justify-content: space-between;
     padding: 10px;
+
     &__amount {
       display: flex;
       flex-direction: column;
       width: 40%;
-      input{
-        padding-left: 5px;
+      font-size: 1rem;
 
+      input {
+        padding-left: 5px;
       }
     }
     &__token-type {
       display: flex;
+      font-size: 1rem;
       flex-direction: column;
       width: 50%;
     }
@@ -281,6 +321,11 @@ hr {
     padding: 10px;
     display: flex;
     flex-direction: column;
+    h2 {
+      b {
+        font-size: 1rem;
+      }
+    }
     .summary {
       display: flex;
       justify-content: space-between;
@@ -289,13 +334,13 @@ hr {
 
       &__title {
         display: flex;
+        font-size: 1rem;
       }
       &__input {
         display: flex;
         margin-left: auto;
         width: 30%;
         padding-left: 5px;
-
       }
     }
   }
@@ -308,6 +353,7 @@ hr {
       font-weight: bold;
       display: flex;
       align-items: center;
+      font-size: 0.9rem;
       b {
         color: $blue;
         font-weight: lighter;
@@ -323,14 +369,16 @@ hr {
     display: flex;
     justify-content: space-between;
     margin-bottom: 10px;
-    padding: 15px;
+    padding: 10px;
 
     h2 {
       display: flex;
       align-items: center;
+      font-size: 1rem;
     }
     p {
       color: $blue;
+      font-weight: bold;
     }
   }
   &__main-details {
@@ -343,9 +391,9 @@ hr {
     h3,
     p {
       font-family: monospace;
-      font-size: .9rem;
+      font-size: 0.9rem;
     }
-    p{
+    p {
       color: $blue;
     }
 
@@ -357,7 +405,7 @@ hr {
   &__more-details {
     display: flex;
     justify-content: space-between;
-    height: 200px;
+    height: 280px;
     overflow-y: scroll;
     &::-webkit-scrollbar {
       width: 12px; /* width of the entire scrollbar */
@@ -380,6 +428,13 @@ hr {
       h2 {
         font-weight: bold;
         margin-bottom: 10px;
+        font-size: 1rem;
+      }
+      p {
+        font-size: 1rem;
+      }
+      p[id="about"] {
+        text-align: left;
       }
     }
   }

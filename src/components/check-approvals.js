@@ -1,14 +1,16 @@
 import React from "react";
-import { FiCheckSquare, FiBox, FiX } from "react-icons/fi";
+import { FiBox, FiHexagon } from "react-icons/fi";
+import { FaUnlink } from "react-icons/fa";
 
 export default function CheckApprovals() {
   return (
     <>
       <div className="approvals">
         <div className="approvals__header">
-          <span className="icon_wrapper">
-            <FiCheckSquare /> <h3>Approval Checker</h3>
-          </span>
+          <h3>
+            <FiHexagon style={{ marginRight: 5 }} />
+            Token Approvals
+          </h3>
           <p>
             <b>0xef1...45bd</b>
           </p>
@@ -21,37 +23,49 @@ export default function CheckApprovals() {
           <div className="contract">
             <div className="contract__title">0xef1...45bd [UNI-V3 LP]</div>
             <div className="contract__button">
-              <FiX /> <p>Revoke</p>{" "}
+              <p>
+                <FaUnlink style={{ marginRight: 5 }} /> Revoke
+              </p>{" "}
             </div>
           </div>
           <div className="contract">
             <div className="contract__title">0xef1...45bd [UNI-V3 LP]</div>
             <div className="contract__button">
-              <FiX /> <p>Revoke</p>{" "}
+              <p>
+                <FaUnlink style={{ marginRight: 5 }} /> Revoke
+              </p>{" "}
             </div>
           </div>
           <div className="contract">
             <div className="contract__title">0xef1...45bd [UNI-V3 LP]</div>
             <div className="contract__button">
-              <FiX /> <p>Revoke</p>{" "}
+              <p>
+                <FaUnlink style={{ marginRight: 5 }} /> Revoke
+              </p>{" "}
             </div>
           </div>
           <div className="contract">
             <div className="contract__title">0xef1...45bd [UNI-V3 LP]</div>
             <div className="contract__button">
-              <FiX /> <p>Revoke</p>{" "}
+              <p>
+                <FaUnlink style={{ marginRight: 5 }} /> Revoke
+              </p>{" "}
             </div>
           </div>
           <div className="contract">
             <div className="contract__title">0xef1...45bd [UNI-V3 LP]</div>
             <div className="contract__button">
-              <FiX /> <p>Revoke</p>{" "}
+              <p>
+                <FaUnlink style={{ marginRight: 5 }} /> Revoke
+              </p>{" "}
             </div>
           </div>
           <div className="contract">
             <div className="contract__title">0xef1...45bd [UNI-V3 LP]</div>
             <div className="contract__button">
-              <FiX /> <p>Revoke</p>{" "}
+              <p>
+                <FaUnlink style={{ marginRight: 5 }} /> Revoke
+              </p>{" "}
             </div>
           </div>
         </div>

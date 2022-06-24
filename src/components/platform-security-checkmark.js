@@ -14,6 +14,7 @@ export default function PlatformSecurityCheckmark() {
       }
     );
   }, []);
+
   return (
     <>
       <div className="platform-checkmark">
@@ -32,7 +33,7 @@ export default function PlatformSecurityCheckmark() {
         <div className="platform-checkmark__more-details">
           <span>
             <h2>About</h2>
-            <p>
+            <p id="about">
               Uniswap is a decentralized exchange protocol built on Ethereum. To
               be more precise, it is an automated liquidity protocol. There is
               no order book or any centralized party required to make trades.

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import { Select } from "@chakra-ui/react";
 import { FiChevronDown, FiSearch, FiAlertTriangle } from "react-icons/fi";
 import { tokenList } from "./token-list";
@@ -41,8 +41,11 @@ export default function NFTPriceChecker() {
           console.log(error);
         });
     } else {
-      toast.warning("Please fill both amount and token type fields!",{autoClose: 2000, position: "bottom-right", closeButton:false})
-
+      toast.warning("Please fill both amount and token type fields!", {
+        autoClose: 2000,
+        position: "bottom-right",
+        closeButton: false,
+      });
     }
   };
 
@@ -50,9 +53,10 @@ export default function NFTPriceChecker() {
     <>
       <div className="price-checker">
         <div className="price-checker__header">
-          <span className="icon_wrapper">
-            <FiSearch /> <h3>NFT Price Check</h3>
-          </span>
+          <h3>
+            <FiSearch style={{ marginRight: 5 }} />
+            NFT Price Check
+          </h3>
           <p>
             <b>0xef1...45bd</b>
           </p>
@@ -63,18 +67,18 @@ export default function NFTPriceChecker() {
         <div className="scroll">
           <div className="nft-details">
             <div className="nft-details__address">
-              <p>NFT Address</p>
+              NFT Address
               <input type="text" />
             </div>
             <div className="nft-details__token-id">
-              <p>Token ID</p>
+              Token ID
               <input type="text" />
             </div>
           </div>
 
           <div className="offer-details">
             <div className="offer-details__amount">
-              <p>Offer Amount</p>
+              Offer Amount
               <input
                 type="text"
                 value={offerAmount}
@@ -82,7 +86,7 @@ export default function NFTPriceChecker() {
               />
             </div>
             <div className="offer-details__token-type">
-              <p>Token Type</p>
+              Token Type
               <Select
                 size="sm"
                 _focus={{ boxShadow: "none" }}
@@ -96,11 +100,13 @@ export default function NFTPriceChecker() {
               </Select>
             </div>
           </div>
-          <div className="generate_summary"><button className="generate_summary__btn" onClick={handleSummary}>
-            {" "}
-            Generate Summary
-          </button></div>
-          
+          <div className="generate_summary">
+            <button className="generate_summary__btn" onClick={handleSummary}>
+              {" "}
+              Generate Summary
+            </button>
+          </div>
+
           <div className="summary_list">
             <h2>
               <b>Executive Summary</b>
