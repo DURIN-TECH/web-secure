@@ -12,18 +12,12 @@ $green: #00e676;
 $red: #d50000;
 $dark: #464555;
 
-html {
-  font-size: 1rem;
-}
-
 body {
   font-family: "Poppins", sans-serif;
   margin: 0px;
   width: 400px;
-  height: 500px;
+  height: 520px;
   overflow: scroll;
-  position: relative;
-  background-color: #aaaabc;
 }
 
 header {
@@ -38,6 +32,12 @@ header {
   justify-content: space-between;
   padding: 5px;
   align-items: center;
+  .mode-toggle{
+    display: flex;
+    width: fit-content;
+    height: fit-content;
+    cursor: pointer;
+  }
 }
 hr {
   margin-top: 0px;
@@ -421,9 +421,13 @@ hr {
     span {
       display: flex;
       flex-direction: column;
-      width: 30%;
+      width: 25%;
       text-align: center;
       padding: 5px;
+
+      &:first-child{
+        width:50%
+      }
 
       h2 {
         font-weight: bold;
@@ -434,6 +438,7 @@ hr {
         font-size: 1rem;
       }
       p[id="about"] {
+        padding:5px;
         text-align: left;
       }
     }
