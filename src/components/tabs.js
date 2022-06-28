@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Tabs, TabList, TabPanels, Tab, TabPanel } from "@chakra-ui/react";
 import LinkValidator from "./link-validator";
 import CheckApprovals from "./check-approvals";
 import NFTPriceChecker from "./nft-price-checker";
 import PlatformSecurityCheckmark from "./platform-security-checkmark";
 import { ToastContainer } from "react-toastify";
+
 import {
   FiLink,
   FiCheckSquare,
@@ -12,9 +13,12 @@ import {
   FiShield,
 } from "react-icons/fi";
 import "react-toastify/dist/ReactToastify.css";
+import { ThemeContext } from "../context/themeContext";
 
 export default function HomeTabs() {
-  return (
+  const { darkMode } = useContext(ThemeContext)
+  const tabMode =  darkMode ? {borderBottomColor:'#66FCF1',color:'#66FCF1'} : null
+  return ( 
     <>
       {" "}
       <Tabs>
@@ -22,18 +26,18 @@ export default function HomeTabs() {
           style={{ display: "flex", justifyContent: "space-evenly" }}
           padding="0px"
         >
-          <Tab _focus={{ boxShadow: "none" }} fontSize="sm">
+          <Tab _selected={tabMode} _focus={{ boxShadow: "none"}} fontSize="sm">
             <FiLink style={{ marginRight: 5 }} /> Links
           </Tab>
-          <Tab _focus={{ boxShadow: "none" }} fontSize="sm">
+          <Tab _selected={tabMode} _focus={{ boxShadow: "none" }} fontSize="sm">
             <FiCheckSquare style={{ marginRight: 10 }} />
             Approval
           </Tab>
-          <Tab _focus={{ boxShadow: "none" }} fontSize="sm">
+          <Tab _selected={tabMode} _focus={{ boxShadow: "none" }} fontSize="sm">
             <FiDollarSign style={{ marginRight: 5 }} size={20} />
             Price Checker
           </Tab>
-          <Tab _focus={{ boxShadow: "none" }} fontSize="sm">
+          <Tab _selected={tabMode} _focus={{ boxShadow: "none" }} fontSize="sm">
             <FiShield style={{ marginRight: 5 }} />
             Security
           </Tab>

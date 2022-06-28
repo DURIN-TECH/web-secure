@@ -1,14 +1,18 @@
-import "./styles/app.scss";
+import "./styles/base.scss";
 import  HomeTabs  from "./components/tabs";
 import { FiSun,FiMoon } from "react-icons/fi";
 import { FiLock } from "react-icons/fi";
-import { useState } from "react";
+import { useContext } from "react";
+import { ThemeContext } from "./context/themeContext";
 
 function App() {
-  const [darkMode, setDarkMode] = useState(false);
+  const {darkMode, setDarkMode} = useContext(ThemeContext)
+
   const handleToggle = () => {
     setDarkMode(!darkMode)
+    document.body.classList.toggle("dark-theme");
   }
+  
  
   return (
     <>

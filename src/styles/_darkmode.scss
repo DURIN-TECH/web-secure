@@ -1,0 +1,26 @@
+.dark-theme {
+  background-color: $dark-theme !important;
+  color: #ffffff !important;
+}
+.button-dark {
+  background-color: $dark-theme !important;
+}
+.address-dark {
+  color: $lemon !important;
+}
+.scroll-dark {
+  &::-webkit-scrollbar-track {
+    background: $dark-theme !important;
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: $dark-theme-accent !important; /* color of the scroll thumb */
+    border-radius: 20px !important; /* roundness of the scroll thumb */
+    border: 2px solid $lemon !important; /* creates padding around scroll thumb */
+  }
+}
+.contract-dark {
+  background-color: $dark-theme-accent !important;
+}
+.generate-summary-dark{
+    background-color: $dark-theme-accent !important;
+}

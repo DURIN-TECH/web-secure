@@ -1,7 +1,10 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useContext } from "react";
 import { FiAward } from "react-icons/fi";
+import { ThemeContext } from "../context/themeContext";
 
 export default function PlatformSecurityCheckmark() {
+  const { darkMode } = useContext(ThemeContext);
+
   // send a message to the background script to get exploits data
   useEffect(() => {
     window.chrome.runtime.sendMessage(
@@ -23,14 +26,18 @@ export default function PlatformSecurityCheckmark() {
             {" "}
             <FiAward style={{ marginRight: 5 }} /> Platform Rating
           </h2>
-          <p>uniswap.org</p>
+          <p className={darkMode ? "address-dark" : ""}>uniswap.org</p>
         </div>
         <div className="platform-checkmark__main-details">
           <h3>Dapp Rank: 1</h3>
-          <p>0x4da...ef23</p>
+          <p className={darkMode ? "address-dark" : ""}>0x4da...ef23</p>
           <h1>A+</h1>
         </div>
-        <div className="platform-checkmark__more-details">
+        <div
+          className={`platform-checkmark__more-details ${
+            darkMode ? "scroll-dark" : ""
+          }`}
+        >
           <span>
             <h2>About</h2>
             <p id="about">

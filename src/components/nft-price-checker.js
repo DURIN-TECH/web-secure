@@ -1,15 +1,17 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { Select } from "@chakra-ui/react";
 import { FiChevronDown, FiSearch, FiAlertTriangle } from "react-icons/fi";
 import { tokenList } from "./token-list";
+import { ThemeContext } from "../context/themeContext";
 import axios from "axios";
 
 export default function NFTPriceChecker() {
   const [tokenAddress, setTokenAddress] = useState("");
   const [offerAmount, setOfferAmount] = useState("");
   const [offerValue, setOfferValue] = useState("");
+  const { darkMode } = useContext(ThemeContext);
 
   const handleTokenType = (e) => {
     setTokenAddress(e.target.value);
@@ -58,13 +60,13 @@ export default function NFTPriceChecker() {
             NFT Price Check
           </h3>
           <p>
-            <b>0xef1...45bd</b>
+            <b className={darkMode ? "address-dark" : ""}>0xef1...45bd</b>
           </p>
         </div>
         <h3 className="offer_header">
           Offer Details <FiChevronDown style={{ marginLeft: 10 }} />
         </h3>
-        <div className="scroll">
+        <div className={`scroll ${darkMode ? "scroll-dark" : ""}`}>
           <div className="nft-details">
             <div className="nft-details__address">
               NFT Address
@@ -101,7 +103,12 @@ export default function NFTPriceChecker() {
             </div>
           </div>
           <div className="generate_summary">
-            <button className="generate_summary__btn" onClick={handleSummary}>
+            <button
+              className={`generate_summary__btn ${
+                darkMode ? "generate-summary-dark" : ""
+              }`}
+              onClick={handleSummary}
+            >
               {" "}
               Generate Summary
             </button>
@@ -138,7 +145,8 @@ export default function NFTPriceChecker() {
           </div>
           <div className="verdict">
             <h2>
-              <FiAlertTriangle /> Verdict: <b>In Progress</b>{" "}
+              <FiAlertTriangle /> Verdict:{" "}
+              <b className={darkMode ? "address-dark" : ""}>In Progress</b>{" "}
             </h2>
           </div>
         </div>
