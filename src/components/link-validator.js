@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { FiAlertTriangle, FiCheckCircle } from "react-icons/fi";
@@ -6,8 +6,10 @@ import { Switch } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import stringSimilarity from "string-similarity";
 import { sites } from "./crypto-sites-array";
+import { ThemeContext } from "../context/themeContext";
 
 export default function LinkValidator() {
+  const { darkMode } = useContext(ThemeContext);
   const str = "www.";
   const [currentLink, setCurrentLink] = useState(null);
   const [bestMatch, setBestMatch] = useState(null);
@@ -146,7 +148,9 @@ export default function LinkValidator() {
               style={
                 verdict.status === "good"
                   ? { color: "#00E676" }
-                  : { color: "#D50000" }
+                  : darkMode
+                  ? { color: "#ef5350" }
+                  : { color: "#f44336" }
               }
             >
               {verdict.message}
@@ -178,7 +182,9 @@ export default function LinkValidator() {
               style={
                 validationAlert.status === "good"
                   ? { color: "#00E676" }
-                  : { color: "#D50000" }
+                  : darkMode
+                  ? { color: "#ef5350" }
+                  : { color: "#f44336" }
               }
             >
               {validationAlert.message}
